@@ -1,3 +1,5 @@
+package BrainTeasers;
+
 public class _1025DivisorGame {
     class Solution {
         public boolean divisorGame(int n) {
