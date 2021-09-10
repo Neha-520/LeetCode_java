@@ -31,4 +31,5 @@ public class _1629SlowestKey {
             return m[m.length - 1];
         }
     }
+
 }
