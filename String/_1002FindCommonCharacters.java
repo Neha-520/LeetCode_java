@@ -1,5 +1,8 @@
 package String;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class _1002FindCommonCharacters {
     class Solution {
         public List<String> commonChars(String[] words) {

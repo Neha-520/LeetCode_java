@@ -1,3 +1,5 @@
+package BitManipulation;
+
 public class _191Numberof1bits {
     public class Solution {
         // you need to treat n as an unsigned value

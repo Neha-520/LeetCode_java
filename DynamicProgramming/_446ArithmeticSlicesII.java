@@ -1,5 +1,7 @@
 package DynamicProgramming;
 
+import java.util.HashMap;
+
 public class _446ArithmeticSlicesII {
     class Solution {
         public int numberOfArithmeticSlices(int[] nums) {

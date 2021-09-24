@@ -1,3 +1,5 @@
+package String;
+
 public class _848ShiftingLetters {
     class Solution {
         public String shiftingLetters(String s, int[] shifts) {
