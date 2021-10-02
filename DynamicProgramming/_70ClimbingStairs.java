@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 public class _70ClimbingStairs {
     class Solution {

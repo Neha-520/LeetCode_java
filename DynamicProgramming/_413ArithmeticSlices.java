@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 public class _413ArithmeticSlices {
     class Solution {

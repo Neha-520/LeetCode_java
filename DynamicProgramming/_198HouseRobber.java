@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 public class _198HouseRobber {
     class Solution {

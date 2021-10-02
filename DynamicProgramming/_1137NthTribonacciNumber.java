@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 public class _1137NthTribonacciNumber {
     class Solution {

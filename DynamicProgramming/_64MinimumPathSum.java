@@ -1,4 +1,3 @@
-package DynamicProgramming;
 
 public class _64MinimumPathSum {
     class Solution {
