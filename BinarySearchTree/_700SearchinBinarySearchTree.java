@@ -1,4 +1,3 @@
-package BinarySearchTree;
 
 public class _700SearchinBinarySearchTree {
 
