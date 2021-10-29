@@ -17,6 +17,16 @@ class Tree {
         }
     }
 
+    class Pair {
+        Node node;
+        int state;
+
+        Pair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
+    }
+
     Node insertLevelOrder(int arr[], Node root, int i) {
         if (i < arr.length) {
             Node temp = new Node(arr[i]);
@@ -107,11 +117,55 @@ class Tree {
         }
     }
 
+    void itrPreInPost(Node root) {
+        Stack<Pair> s = new Stack<>();
+        Pair rtp = new Pair(root, 1);
+        s.push(rtp);
+        String pre = "";
+        String in = "";
+        String post = "";
+
+        while (s.size() > 0) {
+            Pair top = s.peek();
+            if (top.state == 1) { // pre,s++,left
+                pre += top.node.data + " ";
+                top.state++;
+
+                if (top.node.left != null) {
+                    Pair lp = new Pair(top.node.left, 1);
+                    s.push(lp);
+                }
+            } else if (top.state == 2) {// in,s++,right
+                in += top.node.data + " ";
+                top.state++;
+
+                if (top.node.right != null) {
+                    Pair rp = new Pair(top.node.right, 1);
+                    s.push(rp);
+                }
+            } else {// post,pop
+                post += top.node.data + " ";
+                s.pop();
+            }
+
+        }
+        System.out.println(pre);
+        System.out.println(in);
+        System.out.println(post);
+    }
+
     public static void main(String[] args) {
         Tree t = new Tree();
         t.root = t.insertLevelOrder(new int[] { 1, 2, 3, 4, 5, 6, 7 }, t.root, 0);
         // t.preorder(t.root);
         t.printLevelOrder(t.root);
         t.zigzagTraversal(t.root);
+
+        System.out.println();
+        System.out.println();
+        // iteratice preorder postorder inorder
+        Tree t1 = new Tree();
+        t1.root = t1.insertLevelOrder(new int[] { 0, 1, 2, 3, 4, 5, 6 }, t1.root, 0);
+        t1.itrPreInPost(t1.root);
     }
 }
