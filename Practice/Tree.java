@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -154,6 +155,50 @@ class Tree {
         System.out.println(post);
     }
 
+    static ArrayList<Integer> path;
+
+    boolean find(Node root, int data) {
+        if (root == null)
+            return false;
+        if (root.data == data) {
+            path.add(root.data);
+            return true;
+        }
+        boolean filc = find(root.left, data);
+        if (filc) {
+            path.add(root.data);
+            return true;
+        }
+        boolean firc = find(root.right, data);
+        if (firc) {
+            path.add(root.data);
+            return true;
+        }
+        return false;
+    }
+
+    void printKLevelsDown(Node root, int k) {
+        if (root == null || k < 0)
+            return;
+        if (k == 0)
+            System.out.println(root.data);
+        printKLevelsDown(root.left, k - 1);
+        printKLevelsDown(root.right, k - 1);
+    }
+
+    void pathToLeafFromRoot(Node root, String path, int sum, int low, int high) {
+        if (root == null)
+            return;
+        if (root.left == null && root.right == null) {
+            sum += root.data;
+            if (sum >= low && sum <= high)
+                System.out.println(path + root.data);
+            return;
+        }
+        pathToLeafFromRoot(root.left, path + root.data + " ", sum + root.data, low, high);
+        pathToLeafFromRoot(root.right, path + root.data + " ", sum + root.data, low, high);
+    }
+
     public static void main(String[] args) {
         Tree t = new Tree();
         t.root = t.insertLevelOrder(new int[] { 1, 2, 3, 4, 5, 6, 7 }, t.root, 0);
@@ -163,9 +208,30 @@ class Tree {
 
         System.out.println();
         System.out.println();
+
+        // ---------------------------
         // iteratice preorder postorder inorder
         Tree t1 = new Tree();
         t1.root = t1.insertLevelOrder(new int[] { 0, 1, 2, 3, 4, 5, 6 }, t1.root, 0);
+        // t1.root = t1.insertLevelOrder(
+        // new int[] { 50, 25, 12, 0, 0, 37, 30, 0, 0, 40, 0, 0, 75, 62, 60, 0, 0, 70,
+        // 0, 0, 87, 0, 0 }, t1.root,
+        // 0);
         t1.itrPreInPost(t1.root);
+
+        // -----------------------------
+        // node to root path
+        path = new ArrayList<>();
+        boolean found = t1.find(t1.root, 4);
+        System.out.println(found);
+        System.out.println(path);
+
+        // ------------------------------
+        // print klevel down
+        t1.printKLevelsDown(t1.root, 2);
+
+        // ------------------------------
+        // print leaf to root path having sum in a given range
+        t1.pathToLeafFromRoot(t1.root, "", 0, 1, 5);
     }
 }
