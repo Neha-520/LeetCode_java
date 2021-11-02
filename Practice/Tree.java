@@ -1,4 +1,4 @@
-
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -199,6 +199,79 @@ class Tree {
         pathToLeafFromRoot(root.right, path + root.data + " ", sum + root.data, low, high);
     }
 
+    void leftViewYoutube(Node root) {
+        if (root == null)
+            return;
+        boolean isFirst = true;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while (!q.isEmpty()) {
+            Node temp = q.poll();
+            if (temp == null) {
+                if (q.size() == 0)
+                    return;
+                q.add(null);
+                isFirst = true;
+            } else {
+                if (isFirst) {
+                    System.out.print(temp.data + " ");
+                    isFirst = false;
+                }
+                if (temp.left != null)
+                    q.add(temp.left);
+                if (temp.right != null)
+                    q.add(temp.right);
+            }
+        }
+    }
+
+    void leftViewGFG(Node root) {
+        if (root == null)
+            return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int n = q.size();
+
+            for (int i = 1; i <= n; i++) {
+                Node temp = q.poll();
+
+                if (i == 1)
+                    System.out.print(temp.data + " ");
+                if (temp.left != null)
+                    q.add(temp.left);
+                if (temp.right != null)
+                    q.add(temp.right);
+            }
+        }
+    }
+
+    void rightViewGFG(Node root) {
+        if (root == null)
+            return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int n = q.size();
+
+            for (int i = 1; i <= n; i++) {
+                Node temp = q.poll();
+
+                if (i == 1)
+                    System.out.print(temp.data + " ");
+                if (temp.right != null)
+                    q.add(temp.right);
+                if (temp.left != null)
+                    q.add(temp.left);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Tree t = new Tree();
         t.root = t.insertLevelOrder(new int[] { 1, 2, 3, 4, 5, 6, 7 }, t.root, 0);
@@ -221,6 +294,7 @@ class Tree {
 
         // -----------------------------
         // node to root path
+        System.out.println("node to root path");
         path = new ArrayList<>();
         boolean found = t1.find(t1.root, 4);
         System.out.println(found);
@@ -228,10 +302,21 @@ class Tree {
 
         // ------------------------------
         // print klevel down
+        System.out.println("Print k levels down");
         t1.printKLevelsDown(t1.root, 2);
 
         // ------------------------------
         // print leaf to root path having sum in a given range
+        System.out.println("print leaf to root path having sum in given range");
         t1.pathToLeafFromRoot(t1.root, "", 0, 1, 5);
+
+        // print left view elements of binary tree
+        System.out.println("left view of tree");
+        t.leftViewYoutube(t.root);
+        System.out.println();
+        t.leftViewGFG(t.root);
+
+        System.out.println("right view of tree");
+        t.rightViewGFG(t.root);
     }
 }
