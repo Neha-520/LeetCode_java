@@ -35,4 +35,28 @@ public class _116PopulatingNextRightPointersineachNode {
             return root;
         }
     }
+
+    class Solution2 {
+        public Node connect(Node root) {
+            if (root == null)
+                return root;
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            while (!q.isEmpty()) {
+                int c = q.size();
+                while (c-- > 0) {
+                    Node x = q.remove();
+                    if (c > 0)
+                        x.next = q.peek();
+                    else
+                        x.next = null;
+                    if (x.left != null)
+                        q.add(x.left);
+                    if (x.right != null)
+                        q.add(x.right);
+                }
+            }
+            return root;
+        }
+    }
 }
