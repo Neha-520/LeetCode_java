@@ -17,4 +17,19 @@ public class _476NumberCompliment {
             return num ^ m;
         }
     }
+
+    // soln3
+    class Solution3 {
+        public int findComplement(int n) {
+            int num = 0;
+            int power = 1;
+            while (n > 0) {
+                int x = (n % 2 == 0) ? 1 : 0;
+                n /= 2;
+                num += x * power;
+                power *= 2;
+            }
+            return num;
+        }
+    }
 }
