@@ -18,4 +18,20 @@ public class _169MajorityElement {
             return k;
         }
     }
+
+    // Moore Voters Algorithm wherm majority element occurs more than n/2 times
+    class Solution {
+        public int majorityElement(int[] nums) {
+            int c = 0, can = 0;
+            for (int i : nums) {
+                if (c == 0)
+                    can = i;
+                if (i == can)
+                    c += 1;
+                else
+                    c -= 1;
+            }
+            return can;
+        }
+    }
 }
