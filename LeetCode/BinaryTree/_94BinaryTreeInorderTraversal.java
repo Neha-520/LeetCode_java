@@ -23,6 +23,25 @@ public class _94BinaryTreeInorderTraversal {
         }
     }
 
+    // iterative approach
+    class Solution2 {
+        public List<Integer> inorderTraversal(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            TreeNode curr = root;
+            Stack<TreeNode> s = new Stack<>();
+            while (curr != null || !s.isEmpty()) {
+                while (curr != null) {
+                    s.push(curr);
+                    curr = curr.left;
+                }
+                curr = s.pop();
+                res.add(curr.val);
+                curr = curr.right;
+            }
+            return res;
+        }
+    }
+
     class Solution {
         public List<Integer> inorderTraversal(TreeNode root) {
             List<Integer> a = new ArrayList<>();
