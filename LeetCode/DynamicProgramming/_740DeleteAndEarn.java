@@ -1,6 +1,33 @@
 public class _740DeleteAndEarn {
 
+    class Solution4 {
+        public int deleteAndEarn(int[] nums) {
+            int[] dp = new int[10001];
+            for (int num : nums)
+                dp[num] += num;
+            for (int i = 2; i < dp.length; i++)
+                dp[i] = Math.max(dp[i] + dp[i - 2], dp[i - 1]);
+            return dp[10000];
+        }
+    }
+
     class Solution {
+        public int deleteAndEarn(int[] nums) {
+            int[] f = new int[10002];
+            int[] dp = new int[10002];
+            for (int i = 0; i < nums.length; i++) {
+                f[nums[i]]++;
+            }
+            dp[0] = 0;
+            dp[1] = f[1] * 1;
+            for (int i = 2; i < dp.length; i++) {
+                dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * f[i]);
+            }
+            return dp[10001];
+        }
+    }
+
+    class Solution3 {
         public int deleteAndEarn(int[] nums) {
             int count[] = new int[10001];
 
