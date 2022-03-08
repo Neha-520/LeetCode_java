@@ -17,4 +17,28 @@ public class _61RotateList {
             return temp.next;
         }
     }
+
+    class Solution2 {
+        public ListNode rotateRight(ListNode head, int k) {
+            if (head == null)
+                return head;
+            ListNode temp = head;
+            int c = 1;
+            while (temp.next != null) {
+                c++;
+                temp = temp.next;
+            }
+            temp.next = head;
+            ListNode curr = head;
+            int y = k % c;
+            int i = 1;
+            while (i < c - y) {
+                curr = curr.next;
+                i++;
+            }
+            head = curr.next;
+            curr.next = null;
+            return head;
+        }
+    }
 }
