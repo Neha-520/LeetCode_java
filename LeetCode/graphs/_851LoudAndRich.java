@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class _851LoudAndRich {
     class Solution {
         ArrayList<Integer>[] graph;
