@@ -19,6 +19,8 @@ class Solution {
     }
 }
 
+//2nd solution
+
 class Solution2 {
     public int[] findThePrefixCommonArray(int[] a, int[] b) {
         int[] stat = new int[a.length + 1];
