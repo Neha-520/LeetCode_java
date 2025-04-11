@@ -1,5 +1,13 @@
 public class _1860IncrementalMemoryLeak {
     class Solution {
+int m;
+        Solution(int mem) {
+            this.m = mem;
+        }
+
+        public String toString() {
+            return m;
+        }
         public int[] memLeak(int memory1, int memory2) {
             int i = 0;
             while (true) {
@@ -15,4 +23,14 @@ public class _1860IncrementalMemoryLeak {
             return new int[] { i, memory1, memory2 };
         }
     }
+
+    public class sum{
+        public static void main(String[] args) {
+            Solution s = new Solution(23);
+            
+            System.out.println(s);
+        }
+    }
 }
+
+
